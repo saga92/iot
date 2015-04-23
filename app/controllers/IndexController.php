@@ -34,8 +34,8 @@ class IndexController extends ControllerBase
                         'username' => $username,
                         'password' => $password,
                         'type' => $type,
-                        'create_time' => '2015-4-25 00:00',
-                        'update_time' => '2015-4-25 00:00',
+                        'create_time' => date('Y-m-d H:m'),
+                        'update_time' => date('Y-m-d H:m'),
                         'is_del' => 0,
                     )
                 );
@@ -73,6 +73,9 @@ class IndexController extends ControllerBase
         }
     }
 
+    public function inputAction(){
+        
+    }
 
 }
 

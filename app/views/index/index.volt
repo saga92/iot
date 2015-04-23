@@ -12,6 +12,6 @@
 
 <form action="/index/login" method='POST'>
 <input type='text' name='username' value='username'/><br/>
-<input type='text' name='passwd' value='password'/>
+<input type='text' name='passwd' value='password'/><br/>
 <input type='submit' name='login' value='login'/>
 </form>
