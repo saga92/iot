@@ -4,8 +4,10 @@ namespace Iot\Models;
 
 use Phalcon\Mvc\Model as Model;
 
-class User extends Model{
+class Resource extends Model{
+
     public function getSource(){
-        return 'user';
+        return 'resource';
     }
+
 }

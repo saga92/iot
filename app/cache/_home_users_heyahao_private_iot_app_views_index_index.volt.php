@@ -31,19 +31,19 @@
 <input type='text' name='price' value='10.6'/><br/>
 <input type='submit' name='add' value='add'/>
 </form>
-{{inputStatus}}
+<?php echo $inputStatus; ?>
 
 <h3>delete resource</h3>
 <form action="/admin/delres" method='POST'>
 <input type='text' name='res_id' value='1'/><br/>
 <input type='submit' value='delete'/>
 </form>
-{{delresStatus}}
+<?php echo $delresStatus; ?>
 
 <br/><br/>
 <h3>list resource</h3>
 <a href="/index/list">table</a>
-{{res}}
+<?php echo $res; ?>
 <table border="1">
     <tr>
         <th>id</th>
@@ -51,19 +51,19 @@
         <th>detail</th>
         <th>price</th>
     </tr>
-    {%for r in res%}
+    <?php foreach ($res as $r) { ?>
     <tr>
-        <td>{{r.id}}</td>
-        <td>{{r.host_name}}</td>
-        <td>{{r.detail}}</td>
-        <td>{{r.price}}</td>
+        <td><?php echo $r->id; ?></td>
+        <td><?php echo $r->host_name; ?></td>
+        <td><?php echo $r->detail; ?></td>
+        <td><?php echo $r->price; ?></td>
     </tr>
-    {%endfor%}
+    <?php } ?>
 </table>
 
 <br/><br/>
 <h3>change password</h3>
 <form action="/index/changepwd" method='POST'>
-<input type='text' name='npwd' value='npwd'/>{{changePwdStatus}}<br/>
+<input type='text' name='npwd' value='npwd'/><?php echo $changePwdStatus; ?><br/>
 <input type='submit' value='change pwd'/>
 </form>
