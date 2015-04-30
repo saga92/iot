@@ -29,4 +29,8 @@ class AdminController extends ControllerBase{
             }
         }
     }
+    public function checkAction(){
+        //检查是否资源到期
+
+    }
 }

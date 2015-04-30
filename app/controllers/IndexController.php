@@ -88,7 +88,7 @@ class IndexController extends ControllerBase
                     'host_name' => $host_name,
                     'detail'    => $detail,
                     'price'     => $price,
-                    'user_id'   => 0,
+                    'is_occupy'   => 0,
                     'create_time' => date('Y-m-d H:m'),
                     'update_time' => date('Y-m-d H:m'),
                     'is_del'    => 0,
@@ -145,5 +145,35 @@ class IndexController extends ControllerBase
             $this->view->pick('index/index');
             $this->view->changePwdStatus = 'fail, you should login';
         }
+    }
+    public function buyAction(){
+        if ($this->request->isPost() == true){
+            $res_id = $this->request->getPost('res_id');
+        }else{
+            $this->view->pick('index/index');
+            $this->view->buyStatus = 'fail request method wrong';
+            return;
+        }
+        if ($this->session->has('user-id')){
+            $userid = $this->session->get('user-id');
+            $month_num = $this->session->get('month_num');
+            $util_time = $this->session->get('util_time');
+            $res = Resource::find($res_id);
+            if ($res->user_id != 0){
+                $this->view->pick('index/index');
+                $this->view->buyStatus = 'fail, the resource has user';
+            }else{
+                $res->user_id = $userid;
+                $res->month_num = $month_num;
+                $res->util_time = $util_time;
+                $res->save();
+                $this->view->pick('index/index');
+                $this->view->buyStatus = 'success';
+            }
+        }else{
+            $this->view->pick('index/index');
+            $this->view->buyStatus = 'fail, you should login';
+        }
+
     }
 }
