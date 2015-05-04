@@ -8,6 +8,13 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
+        $this->assets
+            ->addCss('css/dashboard.css')
+            ->addCss('css/bootstrap.min.css')
+            ->addCss('css/bootstrap-theme.min.css');
+        $this->assets
+            ->addJs('js/jquery.min.js')
+            ->addJs('js/bootstrap.min.js');
         $this->view->username='hello';
         $this->view->password='world';
     }
