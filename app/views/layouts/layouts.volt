@@ -9,13 +9,16 @@
     <meta name="author" content="">
     <link rel="icon" href="img/favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>IOT</title>
 
+    {% block link %}
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"-->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet"-->
+    <link href="/css/dashboard.css" rel="stylesheet">
+    {% endblock %}
+
   </head>
 
   <body>
@@ -30,9 +33,10 @@
           </button>
           <a class="navbar-brand" href="#">IOT --- cloud os platform</a>
         </div>
+        {% block navbar %}
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{login_url}}">{{login_status}}</a></li>
+            <li><a href="#">{{username}}</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
@@ -41,9 +45,10 @@
             <input type="text" class="form-control" placeholder="Search...">
           </form>
         </div>
+        {% endblock %}
       </div>
     </nav>
-
+    {% block content%}
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -57,11 +62,14 @@
         {{ content() }}
       </div>
     </div>
+    {% endblock %}
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/holder.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    {% block script %}
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/holder.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    {% endblock %}
   </body>
 </html>
