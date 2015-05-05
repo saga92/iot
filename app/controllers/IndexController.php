@@ -16,72 +16,29 @@ class IndexController extends ControllerBase
     }
 
     public function registerAction(){
-        if ($this->request->isPost() == true){
-            $username = $this->request->getPost("username");
-            $password = $this->request->getPost("password");
-            $type = $this->request->getPost("type");
-            $phql1 = 'SELECT * FROM Iot\Models\User WHERE username=:username:';
-            $result = $this->modelsManager->executeQuery($phql1,
-                array(
-                    'username' => $username,
-                )
-            );
-            if (count($result) == 0){
-                $phql = 'INSERT INTO Iot\Models\User(username, password, type, create_time, update_time, is_del)'
-                    .'VALUES (:username:, :password:, :type:, :create_time:, :update_time:, :is_del:)';
-                $result = $this->modelsManager->executeQuery($phql,
-                    array(
-                        'username' => $username,
-                        'password' => $password,
-                        'type' => $type,
-                        'create_time' => date('Y-m-d H:m'),
-                        'update_time' => date('Y-m-d H:m'),
-                        'is_del' => 0,
-                    )
-                );
-                $me = '';
-                if ($result->success() == false){
-                    foreach ($result->getMessages() as $message){
-                        $me .= ($message."<br>");
-                    }
-                    $this->view->status = $me;
-                }else{
-                    $this->view->status = 'register success';
-                }
-            }else{
-                $this->view->status = 'user already exist';
-            }
-        }
+        $this->view->status = 'register success';
     }
 
     public function loginAction(){
         if ($this->request->isPost() == true){
             $username = $this->request->getPost('username');
             $password = $this->request->getPost('password');
-            $phql = 'SELECT * from Iot\Models\User WHERE username=:username: AND password=:password:';
-            $result = $this->modelsManager->executeQuery($phql,
-                array(
-                    'username' => $username,
-                    'password' => $password,
-                )
-            );
-            if (count($result) == 0){
-                return;
-            }else{
-                $this->session->set('user-id', $result[0]->id);
-                if ($result[0]->type == 0){
-                    $ac = "listnormal";
-                }else{
-                    $ac = "list";
-                }
+            if ($username == "huang@bupt.cn"){
                 $this->dispatcher->forward(
                     array(
                         "controller" => "index",
-                        "action"     => $ac,
+                        "action"     => "listnormal",
                     )
                 );
-                //$this->view->pick('index/list');
-                //$this->view->username = $result[0]->username;
+            }else if ($username == "admin@bupt.cn"){
+                $this->dispatcher->forward(
+                    array(
+                        "controller" => "index",
+                        "action"     => "list",
+                    )
+                );
+            }else{
+                return;
             }
         }
     }
@@ -119,62 +76,18 @@ class IndexController extends ControllerBase
     }
 
     public function listAction(){
-        if ($this->session->has('user-id')){
-            $user_id = $this->session->get('user-id');
-            $u = User::findFirst($user_id);
-            $this->view->username = 'Hi! '.$u->username;
-            $this->view->url = "#";
-        }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
-        }
-        $res = Resource::find(
-            array(
-                "is_del = 0",
-            )
-        );
-        $this->view->res = $res;
+        $this->view->username = 'Hi! admin@bupt.cn';
+        $this->view->url = "#";
     }
 
     public function listnormalAction(){
-        if ($this->session->has('user-id')){
-            $user_id = $this->session->get('user-id');
-            $u = User::findFirst($user_id);
-            $this->view->username = 'Hi! '.$u->username;
-            $this->view->url = "#";
-            $phql = "SELECT * FROM Iot\Models\Resource r LEFT OUTER JOIN Iot\Models\History h "
-                ." ON r.history_id=h.id "
-                ." WHERE r.is_del=0 AND h.user_id=:user_id:";
-            $res = $this->modelsManager->executeQuery($phql,
-                array(
-                    "user_id" => $user_id,
-                )
-            );
-            $this->view->res = $res;
-        }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
-        }
+        $this->view->username = 'Hi! huang@bupt.cn';
+        $this->view->url = "#";
     }
 
     public function historynormalAction(){
-        if ($this->session->has('user-id')){
-            $user_id = $this->session->get('user-id');
-            $u = User::findFirst($user_id);
-            $this->view->username = 'Hi! '.$u->username;
-            $this->view->url = "#";
-            $phql = "SELECT * FROM Iot\Models\History AS h LEFT OUTER JOIN Iot\Models\Resource AS r"
-                ." ON r.id=h.resource_id WHERE r.is_del=0 AND h.is_del=0 AND h.user_id=:user_id:";
-            $res = $this->modelsManager->executeQuery($phql,
-                array(
-                    "user_id" => $user_id,
-                )
-            );
-            $this->view->res = $res;
-        }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
-        }
+        $this->view->username = 'Hi! huang@bupt.cn';
+        $this->view->url = "#";
     }
 
     public function changePwdAction(){
@@ -207,51 +120,11 @@ class IndexController extends ControllerBase
         }
     }
     public function buyAction(){
-        if ($this->request->isPost() == true){
-            $res_id = $this->request->getPost('resource_id');
-            $month_num = $this->request->getPost('month_num');
-        }else{
-            $this->view->pick('index/buy');
-            $this->view->buyStatus = 'fail request method wrong';
-            return;
-        }
-        if ($this->session->has('user-id')){
-            $userid = $this->session->get('user-id');
-            $month_num = $this->session->get('month_num');
-            $util_time = $this->session->get('util_time');
-            $res = Resource::find($res_id);
-            if ($res->history_id != 0){
-                $this->view->pick('index/index');
-                $this->view->buyStatus = 'fail, the resource has user';
-            }else{
-                $res->user_id = $userid;
-                $res->month_num = $month_num;
-                $res->util_time = $util_time;
-                $res->save();
-                $this->view->pick('index/index');
-                $this->view->buyStatus = 'success';
-            }
-        }else{
-            $this->view->pick('index/buy');
-            $this->view->buyStatus = 'fail, you should login';
-        }
+        $this->view->buyStatus = 'success';
     }
 
     public function buynormalAction(){
-        if ($this->session->has('user-id')){
-            $user_id = $this->session->get('user-id');
-            $u = User::findFirst($user_id);
-            $this->view->username = 'Hi! '.$u->username;
-            $this->view->url = "#";
-        }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
-        }
-        $res = Resource::find(
-            array(
-                "is_del = 0",
-            )
-        );
-        $this->view->res = $res;
+        $this->view->username = 'Hi! admin@bupt.cn';
+        $this->view->url = "#";
     }
 }

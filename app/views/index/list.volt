@@ -63,14 +63,42 @@
             </tr>
           </thead>
           <tbody>
-            {%for r in res%}
             <tr>
-              <td>{{r.id}}</td>
-              <td>{{r.host_name}}</td>
-              <td>{{r.detail}}</td>
-              <td>{{r.price}}</td>
+              <td>1</td>
+              <td>m1.tiny</td>
+              <td>CPU:1 RAM:512MB disk:1GB</td>
+              <td>67.5</td>
             </tr>
-            {%endfor%}
+            <tr>
+              <td>2</td>
+              <td>standard</td>
+              <td>CPU:2 RAM:2GB disk:20GB</td>
+              <td>80</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>m1.small</td>
+              <td>CPU:1 RAM:2GB disk:20GB</td>
+              <td>87</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>m1.medium</td>
+              <td>CPU:2 RAM:4GB disk:40GB</td>
+              <td>200</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>m1.large</td>
+              <td>CPU:4 RAM:8GB disk:80GB</td>
+              <td>400</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>m1.xlarge</td>
+              <td>CPU:8 RAM:16GB disk:160GB</td>
+              <td>800</td>
+            </tr>
           </tbody>
         </table>
       </div>
