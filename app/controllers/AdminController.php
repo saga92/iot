@@ -2,6 +2,7 @@
 
 use Iot\Models\Resource as Resource;
 use Iot\Models\History as History;
+use Iot\Models\User as User;
 
 class AdminController extends ControllerBase{
 
@@ -9,24 +10,110 @@ class AdminController extends ControllerBase{
 
     }
 
-    public function delresAction()
+    public function addAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+        }else{
+            $this->view->username = "login";
+            $this->view->url = "index/login";
+        }
+    }
+
+    public function addafAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+        }else{
+            $this->view->username = "login";
+            $this->view->url = "index/login";
+            return;
+        }
+        if($this->request->isPost() == true){
+            $host_name = $this->request->getPost('host_name');
+            $detail = $this->request->getPost('detail');
+            $price = $this->request->getPost('price');
+            $phql = "INSERT INTO Iot\Models\Resource(host_name, detail, price, history_id, "
+                ." create_time, update_time, is_del)"
+                ." VALUES (:host_name:, :detail:, :price:, :history_id:, :create_time:, :update_time:, :is_del:)";
+            $result = $this->modelsManager->executeQuery($phql,
+                array(
+                    'host_name' => $host_name,
+                    'detail'    => $detail,
+                    'price'     => $price,
+                    'history_id'   => 0,
+                    'create_time' => date('Y-m-d H:m'),
+                    'update_time' => date('Y-m-d H:m'),
+                    'is_del'    => 0,
+                )
+            );
+            if ($result->success() == true){
+                $this->view->pick('admin/addaf');
+                $this->view->inputStatus = 'add success';
+            }else{
+                $this->view->pick('admin/addaf');
+                $me = '';
+                foreach ($result->getMessages() as $message){
+                    $me .= ($message.'<br/>');
+                }
+                $this->view->inputStatus = 'add fail<br/>'.$me;
+            }
+        }
+    }
+
+    public function delresAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+            $all_res = resource::find(
+                array(
+                    "is_del = 0",
+                )
+            );
+            $this->view->res = $all_res;
+        }else{
+            $this->view->username = "login";
+            $this->view->url = "index/login";
+        }
+    }
+    public function delresafAction()
     {
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+            $all_res = resource::find(
+                array(
+                    "is_del = 0",
+                )
+            );
+            $this->view->res = $all_res;
+        }else{
+            $this->view->username = "login";
+            $this->view->url = "index/login";
+            return;
+        }
         if ($this->request->isPost() == true)
         {
-            $res_id = $this->request->getPost('res_id');
+            $res_id = $this->request->getPost('resource_id');
             $res = Resource::findFirst(
                 array(
-                    'id' => $res_id,
+                    "id=".$res_id." AND history_id=0",
                 )
             );
             if ($res != null){
                 $res->is_del = 1;
                 $res->save();
-                $this->view->pick('/index/index');
                 $this->view->delresStatus = 'del res success';
             }else{
-                $this->view->pick('/index/index');
-                $this->view->delresStatus = 'del res fail<br>';
+                $this->view->delresStatus = 'del res fail, resource has been occupy';
             }
         }
     }

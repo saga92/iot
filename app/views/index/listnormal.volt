@@ -33,24 +33,24 @@
 
       <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
+          <img src="/img/thumbnail08.jpeg" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Mankind</h4>
+          <span class="text-muted">Enjoyable& Easy</span>
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
+          <img src="/img/thumbnail07.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Tool</h4>
+          <span class="text-muted">huge amount</span>
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
+          <img src="/img/thumbnail06.jpeg" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Style</h4>
+          <span class="text-muted">Faster& Reliable</span>
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
-          <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
+          <img src="/img/thumbnail05.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
+          <h4>Place</h4>
+          <span class="text-muted">Safe</span>
         </div>
       </div>
 

@@ -90,38 +90,6 @@ class IndexController extends ControllerBase
         }
     }
 
-    public function inputAction(){
-        if($this->request->isPost() == true){
-            $host_name = $this->request->getPost('host_name');
-            $detail = $this->request->getPost('detail');
-            $price = $this->request->getPost('price');
-            $phql = "INSERT INTO Iot\Models\Resource(host_name, detail, price, user_id, create_time, update_time, is_del)"
-                ."VALUES (:host_name:, :detail:, :price:, :user_id:, :create_time:, :update_time:, :is_del:)";
-            $result = $this->modelsManager->executeQuery($phql,
-                array(
-                    'host_name' => $host_name,
-                    'detail'    => $detail,
-                    'price'     => $price,
-                    'is_occupy'   => 0,
-                    'create_time' => date('Y-m-d H:m'),
-                    'update_time' => date('Y-m-d H:m'),
-                    'is_del'    => 0,
-                )
-            );
-            if ($result->success() == true){
-                $this->view->pick('index/index');
-                $this->view->inputStatus = 'add success';
-            }else{
-                $this->view->pick('index/index');
-                $me = '';
-                foreach ($result->getMessages() as $message){
-                    $me .= ($message.'<br/>');
-                }
-                $this->view->inputStatus = 'add fail<br/>'.$me;
-            }
-        }
-    }
-
     public function listAction(){
         if ($this->session->has('user-id')){
             $user_id = $this->session->get('user-id');
