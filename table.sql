@@ -14,7 +14,7 @@ create table `resource`(
 	`host_name` varchar(128) not null default '' comment 'host',
 	`detail` varchar(1024) not null default '' comment 'detail',
 	`price` float(5,2) not null default '0.00' comment 'price yuan/month',
-    `is_occupy` tinyint(2) not null default '0' comment 'is_occupy',
+    `history_id` int(11) not null default '0' comment 'history_id',
 	`create_time` datetime not null default '0000-00-00 00:00' comment 'create_time',
 	`update_time` datetime not null default '0000-00-00 00:00' comment 'update_time',
 	`is_del` tinyint(2) not null default '0' comment '1 is del',
