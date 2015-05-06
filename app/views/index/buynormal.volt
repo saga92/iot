@@ -14,6 +14,10 @@
 <script src="/js/bootstrap.min.js"></script>
 {% endblock %}
 
+{% block brand %}
+<a class="navbar-brand" href="/index/listnormal">IOT --- cloud os platform</a>
+{% endblock%}
+
 {% block content %}
 <div class="container-fluid">
   <div class="row">

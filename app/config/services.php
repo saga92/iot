@@ -7,6 +7,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
+use Phalcon\Logger\Adapter\File as FileAdapter;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
@@ -84,4 +85,10 @@ $di->set('session', function () {
 $di->set('router', function(){
     require __DIR__.'/routes.php';
     return $router;
+});
+
+$di->set('logger', function() use ($config){
+    return new FileAdapter(
+        $config->application->logDir.'/test.log'
+    );
 });

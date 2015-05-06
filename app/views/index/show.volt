@@ -3,7 +3,7 @@
 {% block navbar %}
 <div id="navbar" class="navbar-collapse collapse">
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="/index">Login in</a></li>
+    <li><a href="/index/login">Login in</a></li>
   </ul>
 </div>
 {% endblock %}

@@ -14,6 +14,10 @@
 <script src="/js/bootstrap.min.js"></script>
 {% endblock %}
 
+{% block brand %}
+<a class="navbar-brand" href="/index/listnormal">IOT --- cloud os platform</a>
+{% endblock%}
+
 {% block content %}
 <div class="container-fluid">
   <div class="row">
@@ -34,15 +38,19 @@
               <th>host name</th>
               <th>detail</th>
               <th>price</th>
+              <th>month</th>
+              <th>util time</th>
             </tr>
           </thead>
           <tbody>
             {%for r in res%}
             <tr>
-              <td>{{r.id}}</td>
-              <td>{{r.host_name}}</td>
-              <td>{{r.detail}}</td>
+              <td>{{r.rid}}</td>
+              <td>{{r.hname}}</td>
+              <td>{{r.rdetail}}</td>
               <td>{{r.price}}</td>
+              <td>{{r.mu}}</td>
+              <td>{{r.utime}}</td>
             </tr>
             {%endfor%}
           </tbody>
