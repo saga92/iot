@@ -52,8 +52,8 @@
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" action="/index/login" method='POST'>
                 <span id="reauth-email" class="reauth-email"></span>
-                <input name="username"type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
