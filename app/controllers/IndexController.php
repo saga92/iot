@@ -96,16 +96,15 @@ class IndexController extends ControllerBase
             $u = User::findFirst($user_id);
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
+            $res = Resource::find(
+                array(
+                    "is_del = 0",
+                )
+            );
+            $this->view->res = $res;
         }else{
-            $this->view->username = "login";
             $this->view->url = "index/login";
         }
-        $res = Resource::find(
-            array(
-                "is_del = 0",
-            )
-        );
-        $this->view->res = $res;
     }
 
     public function listnormalAction(){
@@ -126,8 +125,7 @@ class IndexController extends ControllerBase
             );
             $this->view->res = $res;
         }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
         }
     }
 
@@ -148,8 +146,7 @@ class IndexController extends ControllerBase
             );
             $this->view->res = $res;
         }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
         }
     }
 
@@ -250,8 +247,8 @@ class IndexController extends ControllerBase
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
         }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
+            return;
         }
         $res = resource::find(
             array(

@@ -17,8 +17,7 @@ class AdminController extends ControllerBase{
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
         }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
         }
     }
 
@@ -29,8 +28,7 @@ class AdminController extends ControllerBase{
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
         }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
             return;
         }
         if($this->request->isPost() == true){
@@ -78,8 +76,7 @@ class AdminController extends ControllerBase{
             );
             $this->view->res = $all_res;
         }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
         }
     }
     public function delresafAction()
@@ -96,8 +93,7 @@ class AdminController extends ControllerBase{
             );
             $this->view->res = $all_res;
         }else{
-            $this->view->username = "login";
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
             return;
         }
         if ($this->request->isPost() == true)
