@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/index/listnormal">Overview <span class="sr-only">(current)</span></a></li>
         <li><a href="/index/buynormal">Buy</a></li>
         <li><a href="/index/historynormal">History</a></li>
       </ul>

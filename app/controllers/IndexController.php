@@ -106,6 +106,11 @@ class IndexController extends ControllerBase
                 )
             );
             $this->view->res = $res;
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->url = "index/login";
         }
@@ -128,6 +133,11 @@ class IndexController extends ControllerBase
                 )
             );
             $this->view->res = $res;
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
         }
@@ -149,6 +159,11 @@ class IndexController extends ControllerBase
                 )
             );
             $this->view->res = $res;
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
         }
@@ -188,6 +203,11 @@ class IndexController extends ControllerBase
             $u = user::findfirst($user_id);
             $this->view->username = 'hi! '.$u->username;
             $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->username = "login";
             $this->view->url = "index/login";
@@ -250,6 +270,11 @@ class IndexController extends ControllerBase
             $u = user::findfirst($user_id);
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
             return;
@@ -272,6 +297,11 @@ class IndexController extends ControllerBase
             $u = User::findFirst($user_id);
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
         }

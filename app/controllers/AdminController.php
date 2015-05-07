@@ -20,6 +20,11 @@ class AdminController extends ControllerBase{
             }
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
         }
@@ -35,6 +40,11 @@ class AdminController extends ControllerBase{
             }
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
             return;
@@ -87,6 +97,11 @@ class AdminController extends ControllerBase{
                 )
             );
             $this->view->res = $all_res;
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
         }
@@ -108,6 +123,11 @@ class AdminController extends ControllerBase{
                 )
             );
             $this->view->res = $all_res;
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
             return;
@@ -140,6 +160,11 @@ class AdminController extends ControllerBase{
             }
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
             $to_money = $this->totalMoney();
             $this->view->to_money = $to_money;
         }else{
@@ -157,6 +182,11 @@ class AdminController extends ControllerBase{
             }
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
         }else{
             $this->view->pick('index/login');
         }
@@ -194,4 +224,21 @@ class AdminController extends ControllerBase{
         }
         return $total_money;
     }
+
+    public function helpAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
+        }else{
+            $this->view->pick('index/login');
+        }
+    }
+
 }

@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block brand %}
-<a class="navbar-brand" href="/index/listnormal">IOT --- cloud os platform</a>
+<a class="navbar-brand" href="/index/list">IOT --- cloud os platform</a>
 {% endblock%}
 
 {% block content %}
@@ -23,9 +23,11 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li><a href="/index/listnormal">Overview</a></li>
-        <li><a href="/index/buynormal">Buy</a></li>
-        <li><a href="/index/historynormal">History</a></li>
+        <li><a href="/index/list">Overview</a></li>
+        <li><a href="/admin/add">Add Resource</a></li>
+        <li><a href="/admin/delres">Delete Resource</a></li>
+        <li><a href="/admin/report">Reports</a></li>
+        <!-- <li><a href="/admin/analyze">Analytics</a></li> -->
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
