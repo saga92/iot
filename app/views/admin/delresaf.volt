@@ -22,7 +22,7 @@
         <li><a href="/index/list">Overview</a></li>
         <li><a href="/admin/add">Add Resource</a></li>
         <li class="active"><a href="/admin/delres">Delete <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Reports</a></li>
+        <li><a href="/admin/report">Reports</a></li>
         <li><a href="#">Analytics</a></li>
       </ul>
     </div>

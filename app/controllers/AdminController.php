@@ -113,6 +113,20 @@ class AdminController extends ControllerBase{
             }
         }
     }
+
+    public function reportAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+            $to_money = $this->totalMoney();
+            $this->view->to_money = $to_money;
+        }else{
+            $this->view->pick('index/login');
+        }
+    }
+
     public function checkTimeout($user_id){
         //检查是否资源到期
         $phql = 'SELECT * FROM Iot\Models\History WHERE user_id = :user_id: and'
@@ -134,13 +148,14 @@ class AdminController extends ControllerBase{
         }
     }
 
-    public function totalMoney($user_id){
-        $phql = "SELECT * FROM Iot\Models\History h LEFT OUTER JOIN Iot\Models\Resource r"
+    public function totalMoney(){
+        $phql = "SELECT r.price AS res_price, h.month_num AS mu "
+            ." FROM Iot\Models\History h LEFT OUTER JOIN Iot\Models\Resource r"
             ." ON h.resource_id = r.id";
         $result = $this->modelsManager->executeQuery($phql);
         $total_money = 0;
         foreach($result as $re){
-            $total_money += ($re->price * $re->month_num);
+            $total_money += ($re->res_price * $re->mu);
         }
         return $total_money;
     }

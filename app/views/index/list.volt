@@ -26,7 +26,7 @@
         <li class="active"><a href="/index/list">Overview <span class="sr-only">(current)</span></a></li>
         <li><a href="/admin/add">Add Resource</a></li>
         <li><a href="/admin/delres">Delete Resource</a></li>
-        <li><a href="#">Reports</a></li>
+        <li><a href="/admin/report">Reports</a></li>
         <li><a href="#">Analytics</a></li>
         
       </ul>
