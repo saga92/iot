@@ -90,7 +90,7 @@
                 </td>
               </tr>
               <tr>
-                <td>{{buyStatus}}</td>
+                <td><div id="stat" style="color: rgb(231, 12, 12);">{{buyStatus}}</div></td>
                 <td>
                   <div class="control-group">
                     <!-- Button -->

@@ -20,36 +20,14 @@
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
         <li><a href="/index/list">Overview</a></li>
-        <li class="active"><a href="/admin/add">Add Resource<span class="sr-only">(current)</span></a></li>
+        <li><a href="/admin/add">Add Resource</a></li>
         <li><a href="/admin/delres">Delete Resource</a></li>
         <li><a href="/admin/report">Reports</a></li>
-        <li><a href="/admin/analyze">Analytics</a></li>
-        
+        <li class="active"><a href="/admin/analyze">Analytics<span class="sr-only">(current)</span></a></li>
       </ul>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h2 class="sub-header">Fill the Blank</h2>
-      <div class="table-responsive">
-        <form action="/admin/addaf" method="POST">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>host name</th>
-              <th>detail</th>
-              <th>price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input name="host_name"/></td>
-              <td><input name="detail"/></td>
-              <td><input name="price"/></td>
-            </tr>
-          </tbody>
-        </table>
-        <button class="btn btn-success" type="submit">Add</button>
-        </form>
-      </div>
+      <h2 class="sub-header">Coming Soon...</h2>
     </div>
   </div>
 </div>

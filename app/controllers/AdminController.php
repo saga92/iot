@@ -127,6 +127,17 @@ class AdminController extends ControllerBase{
         }
     }
 
+    public function analyzeAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+        }else{
+            $this->view->pick('index/login');
+        }
+    }
+
     public function checkTimeout($user_id){
         //检查是否资源到期
         $phql = 'SELECT * FROM Iot\Models\History WHERE user_id = :user_id: and'

@@ -33,7 +33,7 @@
 
       <div class="row placeholders">
         <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="/img/thumbnail08.jpeg" class="img-responsive" alt="Generic placeholder thumbnail">
+          <img src="/img/thumbnail10.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
           <h4>Mankind</h4>
           <span class="text-muted">Enjoyable& Easy</span>
         </div>
@@ -43,12 +43,12 @@
           <span class="text-muted">huge amount</span>
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="/img/thumbnail06.jpeg" class="img-responsive" alt="Generic placeholder thumbnail">
+          <img src="/img/thumbnail11.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
           <h4>Style</h4>
           <span class="text-muted">Faster& Reliable</span>
         </div>
         <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="/img/thumbnail05.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
+          <img src="/img/thumbnail12.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
           <h4>Place</h4>
           <span class="text-muted">Safe</span>
         </div>

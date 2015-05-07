@@ -261,4 +261,15 @@ class IndexController extends ControllerBase
     public function logoutAction(){
         $this->session->destroy();
     }
+
+    public function helpAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+        }else{
+            $this->view->pick('index/login');
+        }
+    }
 }

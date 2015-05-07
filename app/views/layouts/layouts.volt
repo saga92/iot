@@ -40,7 +40,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">{{username}}</a></li>
             <li><a href="/index/changepwdnormal">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="/index/help">Help</a></li>
             <li><a href="/index/logout">logout</a></li>
           </ul>
           <form class="navbar-form navbar-right">
