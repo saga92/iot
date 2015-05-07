@@ -94,6 +94,10 @@ class IndexController extends ControllerBase
         if ($this->session->has('user-id')){
             $user_id = $this->session->get('user-id');
             $u = User::findFirst($user_id);
+            if ($u->type == 0){
+                $this->view->pick('index/login');
+                return;
+            }
             $this->view->username = 'Hi! '.$u->username;
             $this->view->url = "#";
             $res = Resource::find(
