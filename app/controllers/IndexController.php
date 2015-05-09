@@ -281,7 +281,7 @@ class IndexController extends ControllerBase
         }
         $res = resource::find(
             array(
-                "history_id = 0 AND is_del=1",
+                "history_id = 0 AND is_del=0",
             )
         );
         $this->view->res = $res;
