@@ -112,7 +112,7 @@ class IndexController extends ControllerBase
                 $this->view->help_url = "/admin/help";
             }
         }else{
-            $this->view->url = "index/login";
+            $this->view->pick('index/login');
         }
     }
 
