@@ -40,6 +40,7 @@
               <th>price</th>
               <th>month</th>
               <th>util time</th>
+              <th>action</th>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +52,7 @@
               <td>{{r.price}}</td>
               <td>{{r.mu}}</td>
               <td>{{r.utime}}</td>
+              <td><a href="/index/start">start</a></td>
             </tr>
             {%endfor%}
           </tbody>

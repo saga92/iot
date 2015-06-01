@@ -19,6 +19,22 @@ class IndexController extends ControllerBase
 
     }
 
+    public function startAction(){
+        if ($this->session->has('user-id')){
+            $user_id = $this->session->get('user-id');
+            $u = User::findFirst($user_id);
+            $this->view->username = 'Hi! '.$u->username;
+            $this->view->url = "#";
+            if ($u->type == 0){
+                $this->view->help_url = "/index/help";
+            }else{
+                $this->view->help_url = "/admin/help";
+            }
+        }else{
+            $this->view->pick('index/login');
+        }
+    }
+
     public function registerAction(){
         if ($this->request->isPost() == true){
             $username = $this->request->getPost("username");
